@@ -409,7 +409,7 @@ class ChatState extends State<Chat> {
           horizontal: 24,
         ),
         child: Text(
-          'no message here',
+          'no message here vz',
           style: widget.theme.emptyChatPlaceholderTextStyle,
           textAlign: TextAlign.center,
         ),

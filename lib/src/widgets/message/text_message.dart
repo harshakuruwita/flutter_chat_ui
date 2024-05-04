@@ -170,9 +170,36 @@ class TextMessage extends StatelessWidget {
         horizontal: theme.messageInsetsHorizontal,
         vertical: theme.messageInsetsVertical,
       ),
-      child: _textWidgetBuilder(user, context, enlargeEmojis),
+      child: Row(
+      children: [
+        _textWidgetBuilder(user, context, enlargeEmojis),
+        // Add the dropdown menu button here
+        IconButton(
+          icon: Icon(Icons.more_vert), // Replace with desired dropdown icon
+          onPressed: () => showActionMenu(context), // Handle dropdown selection
+        ),
+      ],
+    ),
     );
   }
+
+  void showActionMenu(BuildContext context) {
+  final actions = ['Forward', 'Reply']; // List of available actions
+
+  showModalBottomSheet(
+    context: context,
+    builder: (context) => DropdownMenuItem(
+      child: ListView.builder(
+        shrinkWrap: true, // Prevent excessive scrolling
+        itemCount: actions.length,
+        itemBuilder: (context, index) => ListTile(
+          title: Text(actions[index]),
+          onTap: () => (){}, // Handle action selection
+        ),
+      ),
+    ),
+  );
+}
 }
 
 /// Widget to reuse the markdown capabilities, e.g., for previews.

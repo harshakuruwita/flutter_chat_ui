@@ -183,6 +183,9 @@ class _ChatPageState extends State<ChatPage> {
       }
 
       await OpenFilex.open(localPath);
+    }else if (message is types.TextMessage) {
+
+      print('Text message taped');
     }
   }
 
